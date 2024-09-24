@@ -21,7 +21,7 @@ public class PaisEventService {
 	private KafkaTemplate<String, Event<?>> producer;
 	
 	@Value("${topic.customer.name:topic-pais}")
-	private String topic;
+	private String topicPais;
 	
 	public void publish(Pais pais) {
 	
@@ -31,6 +31,6 @@ public class PaisEventService {
 		event.setType(EventType.CREATED);
 		event.setData(pais);
 		
-		this.producer.send(topic, event);
+		this.producer.send(topicPais, event);
 	}
 }
